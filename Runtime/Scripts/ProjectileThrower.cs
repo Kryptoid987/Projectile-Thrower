@@ -4,7 +4,7 @@ using UnityEngine;
 using DG.Tweening;
 using System;
 using UnityEngine.Events;
-using Sirenix.OdinInspector;
+//using Sirenix.OdinInspector;
 using MobileInput_NewInputSystem;
 
 public class ProjectileThrower : MonoBehaviour
@@ -43,9 +43,9 @@ public class ProjectileThrower : MonoBehaviour
 
     [Header("General Spawn Settings")]
     public bool tweenIn = false;
-    [HideIf("@!tweenIn")] public float tweenInTime = 0.2f;
-    [HideIf("@!tweenIn")] public float tweenOffset = 0.02f;
-    [HideIf("@!tweenIn")] public TweenDir tweenDir = TweenDir.FromBottom;
+    /*[HideIf("@!tweenIn")]*/ public float tweenInTime = 0.2f;
+    /*[HideIf("@!tweenIn")]*/ public float tweenOffset = 0.02f;
+    /*[HideIf("@!tweenIn")]*/ public TweenDir tweenDir = TweenDir.FromBottom;
 
     [Header("Throw Settings")]
     public float minForwardForce = 0.5f;
@@ -59,7 +59,7 @@ public class ProjectileThrower : MonoBehaviour
     [Header("Components")]
     [SerializeField] protected Rigidbody spinMechanicRigidbody; //Rigidbody for the visual placeholder spin mechanic
     [SerializeField] protected Transform visualTransformRoot; // on screen location. Used to spawn projectile.
-    [SerializeField, PropertySpace(0,10)] protected Collider touchCollider; /// The collider used for the touch controls.
+    [SerializeField, /*PropertySpace(0,10)*/] protected Collider touchCollider; /// The collider used for the touch controls.
 
     //Touch / Swiping local variables
     private Vector3 initialPos; //Initial position of the on screen placeholder.
@@ -78,19 +78,19 @@ public class ProjectileThrower : MonoBehaviour
     public bool isResetting { get; private set; } = false; //Is the projectile thrower currently resetting
 
     //Events
-    [Tooltip("Called when a projectile had started to be held"), FoldoutGroup("Events")]
+    [Tooltip("Called when a projectile had started to be held")]//, FoldoutGroup("Events")]
     public UnityEvent OnProjectileHeld = new UnityEvent();
     public static event Action onProjectileHeld;
-    [Tooltip("Called when a new projectile is spawned"), FoldoutGroup("Events")]
+    [Tooltip("Called when a new projectile is spawned")]//, FoldoutGroup("Events")]
     public UnityEvent OnProjectileSpawned = new UnityEvent();
     public static event Action onProjectileSpawned;
-    [Tooltip("Called when a new projectile is equipped"), FoldoutGroup("Events")]
+    [Tooltip("Called when a new projectile is equipped")]//, FoldoutGroup("Events")]
     public UnityEvent OnProjectileEquipped = new UnityEvent();
     public static event Action onProjectileEquipped;
-    [Tooltip("Called when the held projectile is successfully thrown"), FoldoutGroup("Events")]
+    [Tooltip("Called when the held projectile is successfully thrown")]//, FoldoutGroup("Events")]
     public UnityEvent OnProjectileThrown = new UnityEvent();
     public static event Action onProjectileThrown;
-    [Tooltip("Called when the held projectile is released, but is not thrown (aka it returns to its start point)"), FoldoutGroup("Events")]
+    [Tooltip("Called when the held projectile is released, but is not thrown (aka it returns to its start point)")]//, FoldoutGroup("Events")]
     public UnityEvent OnProjectileReleased = new UnityEvent();
     public static event Action onProjectileReleased;
 

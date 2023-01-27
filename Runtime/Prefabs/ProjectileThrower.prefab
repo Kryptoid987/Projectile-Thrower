@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3287495529005205296}
   - component: {fileID: 3287495529005205297}
   - component: {fileID: 3287495529005205298}
-  - component: {fileID: 4140356163731116069}
   m_Layer: 0
   m_Name: ProjectileThrower - Handler
   m_TagString: Untagged
@@ -76,9 +75,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4ca38d653cb34b2faf6b983a421b950, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilePrefabs:
-  - {fileID: 8018480045350223, guid: 73622b8cceba63a4095b9d9e05d291fb, type: 3}
-  - {fileID: 7067447715948597720, guid: a938713e352f0874f971a4a417b4e32c, type: 3}
+  projectilePrefabs: []
   playerCam: {fileID: 0}
   enableOnStart: 0
   randomizeManualSpawnedPrefab: 0
@@ -88,12 +85,15 @@ MonoBehaviour:
   randomizeAutoRespawnRotation: 1
   respawnDelay: 0.5
   ammoCount: 5
+  tweenIn: 0
+  tweenInTime: 0.2
+  tweenOffset: 0.02
+  tweenDir: 0
   minForwardForce: 1
   fowardPower: 8
   sidePower: 4
   inViewScale: 0.4
   swipeThreshold: 50
-  inputHandler: {fileID: 4140356163731116069}
   spinMechanicRigidbody: {fileID: 3287495530405599076}
   visualTransformRoot: {fileID: 3287495529530702594}
   touchCollider: {fileID: 3287495529005205297}
@@ -103,24 +103,15 @@ MonoBehaviour:
   OnProjectileSpawned:
     m_PersistentCalls:
       m_Calls: []
+  OnProjectileEquipped:
+    m_PersistentCalls:
+      m_Calls: []
   OnProjectileThrown:
     m_PersistentCalls:
       m_Calls: []
   OnProjectileReleased:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &4140356163731116069
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3287495529005205303}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad978e0d3601277458980e41a412eb5e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &3287495529068662519
 GameObject:
   m_ObjectHideFlags: 0
