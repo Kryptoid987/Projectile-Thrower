@@ -5,7 +5,7 @@
   "description": "A multi-purpose system for throwing projectiles from screen space.",
   "unity": "2021.1",
   "dependencies": {
-	"com.unity.inputsystem": "1.0.0",
+	
 	"com.kkg.agnosticmobileinput" : "https://github.com/Kryptoid987/AgnosticMobileInput.git"
 },
   "keywords": [
