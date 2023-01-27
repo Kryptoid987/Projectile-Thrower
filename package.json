@@ -6,7 +6,7 @@
   "unity": "2021.1",
   "dependencies": {
 	"com.unity.inputsystem": "1.0.0",
-	"com.kkg.agnosticmobileinput" : "git+https://github.com/Kryptoid987/AgnosticMobileInput.git"
+	"com.kkg.agnosticmobileinput" : "https://github.com/Kryptoid987/Projectile-Thrower.git"
 },
   "keywords": [
     "throwing",
