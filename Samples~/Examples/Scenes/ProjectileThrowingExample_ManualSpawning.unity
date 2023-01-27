@@ -3359,6 +3359,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3287495529005205298, guid: 0afb6851a697f2d4bb6b9aaf6a0d4ad9, type: 3}
+      propertyPath: projectilePrefabs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3287495529005205298, guid: 0afb6851a697f2d4bb6b9aaf6a0d4ad9, type: 3}
       propertyPath: randomizeAutoRespawnRotation
       value: 0
       objectReference: {fileID: 0}
@@ -3370,6 +3374,14 @@ PrefabInstance:
       propertyPath: randomizeManualSpawnedPrefab
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3287495529005205298, guid: 0afb6851a697f2d4bb6b9aaf6a0d4ad9, type: 3}
+      propertyPath: projectilePrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 7067447715948597720, guid: a938713e352f0874f971a4a417b4e32c, type: 3}
+    - target: {fileID: 3287495529005205298, guid: 0afb6851a697f2d4bb6b9aaf6a0d4ad9, type: 3}
+      propertyPath: projectilePrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 3299977091930455066, guid: 727154b6287ed2945a447a5f3f5b6017, type: 3}
     - target: {fileID: 3287495529068662518, guid: 0afb6851a697f2d4bb6b9aaf6a0d4ad9, type: 3}
       propertyPath: m_RootOrder
       value: 0
