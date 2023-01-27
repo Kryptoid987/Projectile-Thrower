@@ -1,0 +1,33 @@
+{
+  "name": "com.kkg.projectilethrower",
+  "version": "1.0.0",
+  "displayName": "Projectile Thrower",
+  "description": "A multi-purpose system for throwing projectiles from screen space.",
+  "unity": "2021.1",
+  "dependencies": {
+	"com.unity.inputsystem": "1.0.0"
+	"com.kkg.agnosticmobileinput" : "https://github.com/Kryptoid987/AgnosticMobileInput.git"
+},
+  "keywords": [
+    "throwing",
+    "projectile"
+  ],
+  "samples": [
+    {
+      "displayName": "Examples",
+      "path": "Samples~/Examples"
+    },
+    {
+      "displayName": "Prefabs",
+      "path": "Samples~/Prefabs"
+    }
+  ],
+  "author": {
+    "name": "Scott Vander Pryt",
+    "email": "kryptoid98@gmail.com",
+    "url": "https://www.youtube.com/channel/UCqzzogkft4PQc2VUB521vUw"
+  }
+}
+
+
+
