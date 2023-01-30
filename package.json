@@ -1,19 +1,11 @@
 {
   "name": "com.kkg.projectilethrower",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "displayName": "Projectile Thrower",
   "description": "A multi-purpose system for throwing projectiles from screen space.",
-  "contributors": [
-    {
-      "name": "Jeffrey Lanters",
-      "url": "https://github.com/jeffreylanters/unity-tweens#tweening-methods"
-    }
-  ],
   "unity": "2021.1",
   "dependencies": {
-	"com.unity.inputsystem": "1.0.0",
-	"com.kkg.agnosticmobileinput": "1.0.0",
-	"nl.elraccoone.tweens": "1.0.0"
+	"com.unity.inputsystem": "1.0.0"
 },
   "keywords": [
     "throwing",

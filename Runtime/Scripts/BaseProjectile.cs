@@ -3,34 +3,38 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-[RequireComponent(typeof(Rigidbody))]
-public class BaseProjectile : MonoBehaviour
+namespace ProjectileThrower
 {
-    public Rigidbody rb;
-    public UnityEvent OnInitiated;
-    public UnityEvent<Collision> OnCollision = new UnityEvent<Collision>();
-    bool hasCollided = false;
 
-    protected virtual void Start()
+    [RequireComponent(typeof(Rigidbody))]
+    public class BaseProjectile : MonoBehaviour
     {
-        rb.isKinematic = true;
-    }
+        public Rigidbody rb;
+        public UnityEvent OnInitiated;
+        public UnityEvent<Collision> OnCollision = new UnityEvent<Collision>();
+        bool hasCollided = false;
 
-    public virtual void Initiate(Vector3 force, Vector3 angularForce)
-    {
-        rb.isKinematic = false;
+        protected virtual void Start()
+        {
+            rb.isKinematic = true;
+        }
 
-        rb.AddForce(force, ForceMode.Impulse);
-        rb.angularVelocity = angularForce;
+        public virtual void Initiate(Vector3 force, Vector3 angularForce)
+        {
+            rb.isKinematic = false;
 
-        OnInitiated?.Invoke();
-    }
+            rb.AddForce(force, ForceMode.Impulse);
+            rb.angularVelocity = angularForce;
 
-    protected virtual void OnCollisionEnter(Collision collision)
-    {
-        if (hasCollided) return;
+            OnInitiated?.Invoke();
+        }
 
-        hasCollided = true;
-        OnCollision?.Invoke(collision);
+        protected virtual void OnCollisionEnter(Collision collision)
+        {
+            if (hasCollided) return;
+
+            hasCollided = true;
+            OnCollision?.Invoke(collision);
+        }
     }
 }

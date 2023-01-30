@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "com.kkg.agnosticmobileinput": "https://github.com/Kryptoid987/AgnosticMobileInput.git",
-    "nl.elraccoone.tweens": "https://github.com/jeffreylanters/unity-tweens.git",
-  }
-}
