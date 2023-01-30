@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening;
+//using DG.Tweening;
+using ElRaccoone.Tweens;
 using System;
 using UnityEngine.Events;
 //using Sirenix.OdinInspector;
@@ -67,7 +68,7 @@ public class ProjectileThrower : MonoBehaviour
     private float fingerDownTime;
     private Vector2 fingerUp;
     private float fingerUpTime;
-    private Sequence moveSequence;
+    //private Sequence moveSequence;
     //All spawned projectile so far for cleaning up
     protected List<BaseProjectile> allSpawnedProjectiles = new List<BaseProjectile>();
 
@@ -149,7 +150,9 @@ public class ProjectileThrower : MonoBehaviour
 
         if (currentHeldProjectile != null)
         {
-            DOTween.Kill(currentHeldProjectile.transform);
+            //DOTween.Kill(currentHeldProjectile.transform);
+            currentHeldProjectile.gameObject.TweenCancelAll();
+
             Destroy(currentHeldProjectile.gameObject);
             currentHeldProjectile = null;
 
@@ -169,7 +172,9 @@ public class ProjectileThrower : MonoBehaviour
         {
             if (currentHeldProjectile != null)
             {
-                DOTween.Kill(currentHeldProjectile.transform);
+                //DOTween.Kill(currentHeldProjectile.transform);
+                currentHeldProjectile.gameObject.TweenCancelAll();
+
                 Destroy(currentHeldProjectile.gameObject);
 
                 if (autoSpawn) Debug.Log("Current held projectile was disposed of, however a new one will respawn in auto respawn mode.");
@@ -295,7 +300,9 @@ public class ProjectileThrower : MonoBehaviour
             if (tweenDir == TweenDir.FromLeft) dir = -playerCam.transform.right;
             else if (tweenDir == TweenDir.FromRight) dir = playerCam.transform.right;
             currentHeldProjectile.transform.position += dir * tweenOffset;
-            currentHeldProjectile.transform.DOLocalMove(Vector3.zero, tweenInTime).OnComplete(() => touchCollider.enabled = true);
+
+            //currentHeldProjectile.transform.DOLocalMove(Vector3.zero, tweenInTime).OnComplete(() => touchCollider.enabled = true);
+            currentHeldProjectile.transform.TweenLocalPosition(Vector3.zero, tweenInTime).SetOnComplete(() => touchCollider.enabled = true);
         }
         else
             touchCollider.enabled = true;
@@ -528,7 +535,9 @@ public class ProjectileThrower : MonoBehaviour
         allSpawnedProjectiles.Add(currentHeldProjectile);
 
         currentHeldProjectile.Initiate(forceToAdd, spinMechanicRigidbody.angularVelocity);
-        currentHeldProjectile.transform.DOScale(1, 0.5f);
+
+        //currentHeldProjectile.transform.DOScale(1, 0.5f);
+        currentHeldProjectile.transform.TweenLocalScale(Vector3.one, 0.5f);
 
         OnProjectileThrown?.Invoke();
         onProjectileThrown?.Invoke();
@@ -546,10 +555,17 @@ public class ProjectileThrower : MonoBehaviour
 
         if (!hasThrownProjectile) //Tween ball back to center if it was not thrown
         {
-            moveSequence = DOTween.Sequence();
-            moveSequence.Append(gameObject.transform.DOLocalMove(initialPos, 0.5f).SetEase(Ease.OutSine));
-            moveSequence.Join(visualTransformRoot.transform.DOLocalMove(initialPos, 0.5f).SetEase(Ease.OutSine));
-            moveSequence.OnComplete(() => {
+            //moveSequence = DOTween.Sequence();
+            //moveSequence.Append(gameObject.transform.DOLocalMove(initialPos, 0.5f).SetEase(Ease.OutSine));
+            //moveSequence.Join(visualTransformRoot.transform.DOLocalMove(initialPos, 0.5f).SetEase(Ease.OutSine));
+            //moveSequence.OnComplete(() => {
+            //    isResetting = false;
+            //    touchCollider.enabled = true;
+            //});
+
+            gameObject.transform.TweenLocalPosition(initialPos, 0.5f).SetEaseSineOut();
+            visualTransformRoot.transform.TweenLocalPosition(initialPos, 0.5f).SetEaseSineOut().SetOnComplete(() =>
+            {
                 isResetting = false;
                 touchCollider.enabled = true;
             });
@@ -595,13 +611,16 @@ public class ProjectileThrower : MonoBehaviour
     // Ends the do move sequence if the player clicks on the projectile.
     void KillMoveSequence()
     {
-        if (moveSequence != null)
-        {
-            if (moveSequence.IsPlaying())
-            {
-                moveSequence.Kill();
-            }
-        }
+        //if (moveSequence != null)
+        //{
+        //    if (moveSequence.IsPlaying())
+        //    {
+        //        moveSequence.Kill();
+        //    }
+        //}
+
+        gameObject.transform.TweenCancelAll();
+        visualTransformRoot.transform.TweenCancelAll();
     }
 
     private void OnDestroy()
