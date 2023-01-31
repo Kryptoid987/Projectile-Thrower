@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace ProjectileThrowing.Examples
+namespace KKG.ProjectileThrower.Examples
 {
     public class ManualRespawnExample : BaseProjectileThrowerExample
     {

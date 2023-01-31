@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace ProjectileThrower
+namespace KKG.ProjectileThrower
 {
 
     [RequireComponent(typeof(Rigidbody))]

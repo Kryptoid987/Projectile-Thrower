@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace ProjectileThrowing.Examples
+namespace KKG.ProjectileThrower.Examples
 {
     public class AutoRespawnExample : BaseProjectileThrowerExample
     {

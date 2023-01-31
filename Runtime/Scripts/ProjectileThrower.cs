@@ -8,7 +8,7 @@ using UnityEngine.Events;
 //using Sirenix.OdinInspector;
 using MobileInput_NewInputSystem;
 
-namespace ProjectileThrower
+namespace KKG.ProjectileThrower
 {
 
     public class ProjectileThrower : MonoBehaviour
