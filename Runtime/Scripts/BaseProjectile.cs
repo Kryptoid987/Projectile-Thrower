@@ -11,7 +11,6 @@ namespace KKG.ProjectileThrower
     public class BaseProjectile : MonoBehaviour
     {
         public Rigidbody rb;
-        [ReadOnly] public float forwardForceAdded = 0f; // Force added to object when it is thrown
         public UnityEvent OnInitiated;
         public UnityEvent<Collision> OnCollision = new UnityEvent<Collision>();
         bool hasCollided = false;
