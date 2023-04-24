@@ -94,6 +94,11 @@ namespace KKG.ProjectileThrower
         [Tooltip("Called when a new projectile is equipped")]//, FoldoutGroup("Events")]
         public UnityEvent OnProjectileEquipped = new UnityEvent();
         public static event Action onProjectileEquipped;
+        
+        [Tooltip("Called right before the projectile is initiated and thrown.")]//, FoldoutGroup("Events")]
+        public UnityEvent OnBeforeProjectileThrown = new UnityEvent();
+        public static event Action onBeforeProjectileThrown;
+        
         [Tooltip("Called when the held projectile is successfully thrown")]//, FoldoutGroup("Events")]
         public UnityEvent OnProjectileThrown = new UnityEvent();
         public static event Action onProjectileThrown;
@@ -541,6 +546,9 @@ namespace KKG.ProjectileThrower
 
             allSpawnedProjectiles.Add(currentHeldProjectile);
 
+            OnBeforeProjectileThrown?.Invoke();
+            onBeforeProjectileThrown?.Invoke();
+            
             currentHeldProjectile.Initiate(forceToAdd, spinMechanicRigidbody.angularVelocity);
 
             currentHeldProjectile.transform.DOScale(1, 0.5f);
