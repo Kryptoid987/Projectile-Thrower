@@ -1,3 +1,6 @@
+## 1.0.6
+- Added args to return from OnThrown Events (BeforeThrown, and OnThrown)
+
 ## 1.0.5
 - Removed forwardForceAdded variable from baseProjectile
 

@@ -10,6 +10,21 @@ using MobileInput_NewInputSystem;
 
 namespace KKG.ProjectileThrower
 {
+    public struct ProjectileThrownArgs
+    {
+        public ProjectileThrownArgs(float deltaX, float deltaY, float percentDeltaX, float percentDeltaY)
+        {
+            this.deltaX = deltaX;
+            this.deltaY = deltaY;
+            this.percentDeltaX = percentDeltaX;
+            this.percentDeltaY = percentDeltaY;
+        }
+        
+        public readonly float deltaX;
+        public readonly float deltaY;
+        public readonly float percentDeltaX;
+        public readonly float percentDeltaY;
+    }
 
     public class ProjectileThrower : MonoBehaviour
     {
@@ -94,14 +109,12 @@ namespace KKG.ProjectileThrower
         [Tooltip("Called when a new projectile is equipped")]//, FoldoutGroup("Events")]
         public UnityEvent OnProjectileEquipped = new UnityEvent();
         public static event Action onProjectileEquipped;
-        
         [Tooltip("Called right before the projectile is initiated and thrown.")]//, FoldoutGroup("Events")]
-        public UnityEvent OnBeforeProjectileThrown = new UnityEvent();
-        public static event Action onBeforeProjectileThrown;
-        
+        public UnityEvent<ProjectileThrownArgs> OnBeforeProjectileThrown = new UnityEvent<ProjectileThrownArgs>();
+        public static event Action<ProjectileThrownArgs> onBeforeProjectileThrown;
         [Tooltip("Called when the held projectile is successfully thrown")]//, FoldoutGroup("Events")]
-        public UnityEvent OnProjectileThrown = new UnityEvent();
-        public static event Action onProjectileThrown;
+        public UnityEvent<ProjectileThrownArgs> OnProjectileThrown = new UnityEvent<ProjectileThrownArgs>();
+        public static event Action<ProjectileThrownArgs> onProjectileThrown;
         [Tooltip("Called when the held projectile is released, but is not thrown (aka it returns to its start point)")]//, FoldoutGroup("Events")]
         public UnityEvent OnProjectileReleased = new UnityEvent();
         public static event Action onProjectileReleased;
@@ -546,16 +559,18 @@ namespace KKG.ProjectileThrower
 
             allSpawnedProjectiles.Add(currentHeldProjectile);
 
-            OnBeforeProjectileThrown?.Invoke();
-            onBeforeProjectileThrown?.Invoke();
+            var args = new ProjectileThrownArgs(deltaX, deltaY, percentDeltaX, percentDeltaY);
+            
+            OnBeforeProjectileThrown?.Invoke(args);
+            onBeforeProjectileThrown?.Invoke(args);
             
             currentHeldProjectile.Initiate(forceToAdd, spinMechanicRigidbody.angularVelocity);
 
             currentHeldProjectile.transform.DOScale(1, 0.5f);
             //currentHeldProjectile.transform.TweenLocalScale(Vector3.one, 0.5f);
 
-            OnProjectileThrown?.Invoke();
-            onProjectileThrown?.Invoke();
+            OnProjectileThrown?.Invoke(args);
+            onProjectileThrown?.Invoke(args);
             //Null out the current projectile now that its thrown
             currentHeldProjectile = null;
         }

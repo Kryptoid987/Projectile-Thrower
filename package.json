@@ -1,6 +1,6 @@
 {
   "name": "com.kkg.projectilethrower",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "displayName": "Projectile Thrower",
   "description": "A multi-purpose system for throwing projectiles from screen space.",
   "unity": "2021.1",
